@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.ff49ecec.chunk.css",
-    "main.js": "/static/js/main.a8c0fc59.chunk.js",
-    "main.js.map": "/static/js/main.a8c0fc59.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.cfacda2e.js",
-    "runtime~main.js.map": "/static/js/runtime~main.cfacda2e.js.map",
-    "static/css/2.266e55a5.chunk.css": "/static/css/2.266e55a5.chunk.css",
-    "static/js/2.7dcb0a31.chunk.js": "/static/js/2.7dcb0a31.chunk.js",
-    "static/js/2.7dcb0a31.chunk.js.map": "/static/js/2.7dcb0a31.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.e57c4a0dc1aef3359f5349db46d2c24e.js": "/precache-manifest.e57c4a0dc1aef3359f5349db46d2c24e.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.ff49ecec.chunk.css.map": "/static/css/main.ff49ecec.chunk.css.map",
-    "static/media/style.css": "/static/media/night.8f7fd057.png"
+    "main.css": "/yawa/static/css/main.9977391b.chunk.css",
+    "main.js": "/yawa/static/js/main.fb99a8fe.chunk.js",
+    "main.js.map": "/yawa/static/js/main.fb99a8fe.chunk.js.map",
+    "runtime~main.js": "/yawa/static/js/runtime~main.1c46f33d.js",
+    "runtime~main.js.map": "/yawa/static/js/runtime~main.1c46f33d.js.map",
+    "static/css/2.266e55a5.chunk.css": "/yawa/static/css/2.266e55a5.chunk.css",
+    "static/js/2.7dcb0a31.chunk.js": "/yawa/static/js/2.7dcb0a31.chunk.js",
+    "static/js/2.7dcb0a31.chunk.js.map": "/yawa/static/js/2.7dcb0a31.chunk.js.map",
+    "index.html": "/yawa/index.html",
+    "precache-manifest.e058524406a1920adf0fe80cf3427329.js": "/yawa/precache-manifest.e058524406a1920adf0fe80cf3427329.js",
+    "service-worker.js": "/yawa/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/yawa/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.9977391b.chunk.css.map": "/yawa/static/css/main.9977391b.chunk.css.map",
+    "static/media/style.css": "/yawa/static/media/night.8f7fd057.png"
   }
 }
