@@ -11,6 +11,8 @@ import React,
         useEffect} from 'react'
 import {TimelineLite} from 'gsap'
 import WeatherDataArea from './WeatherDataArea'
+import {getLatLong, getWeatherData} from '../api/WeatherDataApi'
+import Spinner from './Spinner.js'
 
 
 
@@ -24,7 +26,7 @@ const App = (props) => {
 
     const [cityname, setCityname] = useState('')
 
-    const [weatherDisplayArea,setWeatherDisplayArea] = useState(<WeatherDataArea city=''/>)
+    const [weatherDisplayArea,setWeatherDisplayArea] = useState(<WeatherDataArea cityDetail={null}/>)
 
     const getDataOnClick = () =>{
         // console.log(inputEl.current.value)
@@ -57,10 +59,6 @@ const App = (props) => {
         document.addEventListener('keydown',e => e.code === 'Enter' ? getDataOnClick():'nothing')
 
         window.addEventListener('resize',resizeListener)
-        
-        //resizeListener()
-        // console.log(windowSize)
-        
 
         inputEl.current.focus()
 
@@ -71,8 +69,23 @@ const App = (props) => {
 
     
     useEffect(() => {
-        // console.log('cityname changed')
-        setWeatherDisplayArea(<WeatherDataArea city={cityname}/>)
+        
+        console.log('City Changed')
+        if(cityname !==''){
+            
+            setWeatherDisplayArea(<Spinner />)
+            getWeatherData(cityname)
+                .then(data => {
+                    
+                    setWeatherDisplayArea(<WeatherDataArea cityDetail={{...data}}/>)
+                })
+                .catch(err => {
+                    console.log(err)
+                    setWeatherDisplayArea(<WeatherDataArea cityDetail={null} />)
+                })
+        }else{
+            setWeatherDisplayArea(<WeatherDataArea cityDetail={null} />)
+        }
     },[cityname])
 
     const searchInputOnFocus = () =>{
@@ -83,8 +96,6 @@ const App = (props) => {
                 flex: '0 0 41.666667%',
                 maxWidth: '41.666667%',
                 marginLeft: '25%'})
-        }else{
-            
         }
     }
 
@@ -94,8 +105,6 @@ const App = (props) => {
                 flex: '0 0 25%',
                 maxWidth: '25%',
                 marginLeft: '41.666667%'})
-        }else{
-            
         }
     }
 
