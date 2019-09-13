@@ -7,7 +7,8 @@ import React,
 import {TimelineLite} from 'gsap'
 import {getLatLong, getWeatherData} from '../api/WeatherDataApi'
 import StatisticsMenu from './StatisticsMenu.js'
-import TemperatureDaily from './TemperatureDaily';
+import TemperatureDaily from './TemperatureDaily'
+import Spinner from './Spinner.js'
 
 
 const Night = require('../images/night.png')
@@ -76,19 +77,27 @@ const WeatherDataArea = ({city}) => {
 
     const [cityDetail,setCityDetail] = useState(null)
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const timerRef = useRef(null)
 
     let weatherLayout
 
     useEffect(()=> {
         console.log('City Changed')
-        if(city !=='')
+        if(city !==''){
+            setIsLoading(true)
             getWeatherData(city)
                 .then(data => {
                     // console.log(data)
+                    setIsLoading(false)
                     setCityDetail({...data})
+                    
                 })
                 .catch(err => console.log(err))
+        }else{
+            setCityDetail(null)
+        }
     },[city])
 
     let timerInterval,initialTime
@@ -109,14 +118,20 @@ const WeatherDataArea = ({city}) => {
         }
     },[cityDetail])
     
-    weatherLayout = getWeatherLayout(cityDetail,timerRef)
+    console.log('Rendering Weatherdataarea')
+    console.log('isLoading : ' + isLoading)
+    console.log('timerref : ')
+    console.log(timerRef)
+    if(!isLoading)
+        weatherLayout = getWeatherLayout(cityDetail,timerRef)
+    else
+        weatherLayout = <Spinner />
 
     return (<>
             <Row className='my-1 overflow-auto' style={{maxHeight:'500px'}}>
                 <Col>
                     {weatherLayout}  
                 </Col>
-                
             </Row>
 
     </>)

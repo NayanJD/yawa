@@ -34,11 +34,18 @@ const App = (props) => {
     const tree = new TimelineLite()
 
     const resizeListener = () => {
-        // console.log(window.innerWidth)
+        console.log(window.innerWidth)
         setWindowSize({
             width : window.innerWidth,
             height : window.innerHeight
         })
+        if(windowSize !== null && windowSize.width < 768){
+            tree.to(searchCol.current,0.7,{
+                flex: '0 0 100%',
+                maxWidth: '100%',
+                marginLeft: '0'
+            })
+        }
     }
 
     //The Effect to detect window width and height for small devices
@@ -50,6 +57,10 @@ const App = (props) => {
         document.addEventListener('keydown',e => e.code === 'Enter' ? getDataOnClick():'nothing')
 
         window.addEventListener('resize',resizeListener)
+        
+        //resizeListener()
+        // console.log(windowSize)
+        
 
         inputEl.current.focus()
 
@@ -67,19 +78,25 @@ const App = (props) => {
     const searchInputOnFocus = () =>{
 
         //prevent search resizing animation for xs devices
-        if(windowSize !== null && windowSize.width > 768)
+        if(windowSize !== null && windowSize.width > 768){
             tree.to(searchCol.current,0.7,{
                 flex: '0 0 41.666667%',
                 maxWidth: '41.666667%',
                 marginLeft: '25%'})
+        }else{
+            
+        }
     }
 
     const searchInputOnBlur = () => {
-        if(windowSize !== null && windowSize.width > 768)
+        if(windowSize !== null && windowSize.width > 768){
             tree.to(searchCol.current,0.7,{
                 flex: '0 0 25%',
                 maxWidth: '25%',
                 marginLeft: '41.666667%'})
+        }else{
+            
+        }
     }
 
     const searchValue = (e) => {
@@ -90,7 +107,7 @@ const App = (props) => {
     return( <>
             <Container fluid='true'>
             <Row className='bg-dark py-0'>
-                <Col xs={12} md={4} className={classnames('text-center','finapp-header','py-auto')}>
+                <Col xs={12} lg={4} className={classnames('text-center','finapp-header','py-auto')}>
                     <span className='h1'>
                         YAWA
                     </span>
@@ -98,7 +115,7 @@ const App = (props) => {
                     
                 </Col>
                 
-                <Col xs={12} md={{span : 3, offset:5}} ref={searchCol}>
+                <Col xs={12} lg={{span : 3, offset:5}} ref={searchCol}>
                     <InputGroup className="mt-md-2 mb-3">
                         
                         <FormControl
